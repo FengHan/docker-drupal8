@@ -3,7 +3,7 @@
 
     `docker build -t hanfeng/docker-drupal8 . `
     
-- myslq 
+- mysql 
 
     `sudo docker run --name some-mysql -v /data/mysql5.6:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=111 -d mysql:5.6`
     `sudo docker inspect some-mysql`
