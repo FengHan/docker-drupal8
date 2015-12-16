@@ -24,3 +24,8 @@
 - Install Drupal8
 
     `http://drupal8.docker/core/install.php`
+    
+- Start
+     
+     `docker start drupal8`
+     `docker start some-mysql`
