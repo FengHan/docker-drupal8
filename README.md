@@ -30,3 +30,8 @@
      `docker start drupal8`
 
      `docker start some-mysql`
+     
+- Attach
+
+    `docker attach drupal8` 
+ 
