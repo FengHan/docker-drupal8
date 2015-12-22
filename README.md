@@ -34,4 +34,8 @@
 - Attach
 
     `docker attach drupal8` 
+    
+- Remoe Container That is not Running
+
+    docker rm `docker ps -aq  --no-trunc`
  
