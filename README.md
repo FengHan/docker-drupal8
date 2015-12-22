@@ -3,11 +3,10 @@
 
     `docker build -t hanfeng/docker-drupal8 . `
     
-- mysql 
-
+## mysql 
     `sudo docker run --name some-mysql -v /data/mysql5.6:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=111 -d mysql:5.6`
     
-    `sudo docker inspect some-mysql`
+    `docker inspect -f '{{ .NetworkSettings.IPAddress }}' some-mysql`
     
     `mysql -uroot -p111 -h 172.16.0.2`
 - web
