@@ -20,6 +20,7 @@ RUN apt-get update \
 	php5-cli \
 	php5-gd \
 	php5-fpm \
+	php5-curl \
 	php5-mysql
     # Nginx Configure
 
