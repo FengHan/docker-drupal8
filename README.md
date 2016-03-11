@@ -1,3 +1,14 @@
+# Docker compose 
+ - `docker-compose build`
+ - `docker-compose up`
+ 
+ 
+ ps:
+  start up `nginx`, `php5-fpm`
+  
+  `create database drupal8`
+
+
 # Docker-Drupal8
 - Docker build
 

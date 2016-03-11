@@ -21,7 +21,8 @@ RUN apt-get update \
 	php5-gd \
 	php5-fpm \
 	php5-curl \
-	php5-mysql
+	php5-mysql\
+	supervisor
     # Nginx Configure
 
     # 用完包管理器后安排打扫卫生可以显著的减少镜像大小
@@ -41,8 +42,9 @@ RUN curl -sS https://getcomposer.org/installer \
     # Install Coder
     #composer global require drupal/coder \
 
+
     # Web Dir
-ADD ./puppet/nginx/ /etc/nginx/sites-available
+ADD ./template/nginx/ /etc/nginx/sites-available
 RUN mkdir -p /app/docroot \
     && chown -R www-data:www-data /app
 
@@ -51,6 +53,10 @@ RUN ln -s /etc/nginx/sites-available/drupal8.conf /etc/nginx/sites-enabled/drupa
 
 WORKDIR /app
 
-EXPOSE 80
-EXPOSE 443
-EXPOSE 22
+# Setup Supervisor.
+RUN echo -e '[program:apache2]\ncommand=/bin/bash -c "source /etc/apache2/envvars && exec /usr/sbin/apache2 -DFOREGROUND"\nautorestart=true\n\n' >> /etc/supervisor/supervisord.conf
+RUN echo -e '[program:mysql]\ncommand=/usr/bin/pidproxy /var/run/mysqld/mysqld.pid /usr/sbin/mysqld\nautorestart=true\n\n' >> /etc/supervisor/supervisord.conf
+
+EXPOSE 80 443 3306 22
+CMD exec supervisord -n
+
